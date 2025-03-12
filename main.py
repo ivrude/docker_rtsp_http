@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 
 frame_queue = queue.Queue(maxsize=10)
-rtsp_camrera = 'rtsp://admin:p@ssw0rd@192.168.0.43:554'
+rtsp_camrera = 'rtsp://admin:p@ssw0rd@192.168.0.44:554'
 
 def capture_frames():
     cap = cv2.VideoCapture(rtsp_camrera)
@@ -50,4 +50,4 @@ def video_feed():
 if __name__ == '__main__':
     capture_thread = threading.Thread(target=capture_frames)
     capture_thread.start()
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=8888)

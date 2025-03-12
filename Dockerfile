@@ -13,8 +13,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Копіюємо всі файли додатку у робочу директорію
 COPY . /app
 
-# Відкриваємо порт 5000 для Flask додатку
-EXPOSE 8080
+EXPOSE 8888
 
 # Команда для запуску Flask додатку
-CMD ["python", "main.py"]
+CMD ["sh", "-c", "python main.py > /dev/null 2>&1"]
+
