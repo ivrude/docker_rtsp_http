@@ -2,12 +2,13 @@ from flask import Flask, Response
 import cv2
 import threading
 import queue
-from config import rtsp_camrera
+
 
 app = Flask(__name__)
 
 
 frame_queue = queue.Queue(maxsize=10)
+rtsp_camrera = 'rtsp://admin:p@ssw0rd@192.168.0.44:554'
 
 def capture_frames():
     cap = cv2.VideoCapture(rtsp_camrera)
