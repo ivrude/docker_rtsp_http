@@ -16,4 +16,5 @@ COPY . /app
 EXPOSE 8888
 
 # Команда для запуску Flask додатку
-CMD ["python", "main.py"]
+CMD ["sh", "-c", "python main.py > /dev/null 2>&1"]
+
