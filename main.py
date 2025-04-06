@@ -29,10 +29,11 @@ def capture_frames():
 
         frame_queue.put(frame)
 
-def generate():
+def generate(scale):
     while True:
         if not frame_queue.empty():
             frame = frame_queue.get()
+            frame = cv2.resize(frame, (0, 0), fx=scale, fy=scale
             ret, buffer = cv2.imencode('.jpg', frame)
             if not ret:
                 print("Failed to encode frame")
@@ -44,8 +45,12 @@ def generate():
 
 @app.route('/video_feed')
 def video_feed():
-    return Response(generate(),
+    return Response(generate(0.365),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+@app.route('/video_feed_small')
+def video_feed_small():
+    return Response(generate(scale=0.2), 
+                    mimetype='multipart/x-mixed-replace; boundary=frame'
 
 if __name__ == '__main__':
     capture_thread = threading.Thread(target=capture_frames)
