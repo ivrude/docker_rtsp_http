@@ -33,7 +33,7 @@ def generate(scale):
     while True:
         if not frame_queue.empty():
             frame = frame_queue.get()
-            frame = cv2.resize(frame, (0, 0), fx=scale, fy=scale
+            frame = cv2.resize(frame, (0, 0), fx=scale, fy=scale)
             ret, buffer = cv2.imencode('.jpg', frame)
             if not ret:
                 print("Failed to encode frame")
